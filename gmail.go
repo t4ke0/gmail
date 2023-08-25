@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/smtp"
 	"os"
+	"path/filepath"
 	"strings"
 	"text/template"
 )
@@ -115,7 +116,7 @@ Content-Disposition: attachment; filename=%s
 
 %s
 
-`, e.EmailConfig.BoundaryRepr, contentType, f, b64Data)
+`, e.EmailConfig.BoundaryRepr, contentType, filepath.Base(f), b64Data)
 		}
 	}
 
